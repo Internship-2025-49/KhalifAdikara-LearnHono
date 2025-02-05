@@ -90,11 +90,30 @@ export async function updatePost(c: Context) {
 
         return c.json({
             success: true,
-            message: 'Post Updated Successfully!',
+            message: 'Post Berhasil Diupdate!',
             data: post
         }, 200);
 
     } catch (e: unknown) {
         console.error(`Error updating post: ${e}`);
+    }
+}
+
+export async function deletePost(c: Context) {
+    try {
+
+        const postId = parseInt(c.req.param('id'));
+
+        await prisma.post.delete({
+            where: { id: postId },
+        });
+
+        return c.json({
+            success: true,
+            message: 'Post Berhasil Dihapus!',
+        }, 200);
+
+    } catch (e: unknown) {
+        console.error(`Error deleting post: ${e}`);
     }
 }
