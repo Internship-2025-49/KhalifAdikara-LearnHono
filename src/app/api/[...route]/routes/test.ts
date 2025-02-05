@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { html } from 'hono/html'
 import { basicAuth } from 'hono/basic-auth'
+import { getPosts } from '../../../controllers/PostControllers'
 
 const app = new Hono()
 
@@ -42,6 +43,8 @@ app.use(
 app.get('/admin', (c) => {
     return c.text('You are authorized!')
 })
+
+app.get('/posts', (c) => getPosts(c));
 
 export default app
 
