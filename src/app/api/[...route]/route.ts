@@ -6,7 +6,7 @@ import authors from './routes/authors'
 import test from './routes/test'
 import { Routes } from './routes'
 
-export const runtime = 'serverless'
+export const runtime = 'nodejs'
 
 const app = new Hono().basePath('/api')
 
@@ -16,8 +16,8 @@ app.route('/books', books)
 app.route('/test', test)
 app.route('/posts', Routes)
 
-
 export const GET = handle(app)
 export const POST = handle(app)
+export const PUT = handle(app) 
 
 export type AppType = typeof app

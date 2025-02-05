@@ -69,3 +69,32 @@ export async function getPostById(c: Context) {
         console.error(`Error finding post: ${e}`);
     }
 }
+
+export async function updatePost(c: Context) {
+    try {
+        const postId = parseInt(c.req.param('id'));
+
+        const body = await c.req.parseBody();
+
+        const title   = typeof body['title'] === 'string' ? body['title'] : '';
+        const content = typeof body['content'] === 'string' ? body['content'] : '';
+
+        const post = await prisma.post.update({
+            where: { id: postId },
+            data: {
+                title: title,
+                content: content,
+                updatedAt: new Date(),
+            },
+        });
+
+        return c.json({
+            success: true,
+            message: 'Post Updated Successfully!',
+            data: post
+        }, 200);
+
+    } catch (e: unknown) {
+        console.error(`Error updating post: ${e}`);
+    }
+}
