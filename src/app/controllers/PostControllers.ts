@@ -33,7 +33,7 @@ export async function createPost(c: Context) {
 
     return c.json({
         success: true,
-        message: 'Post Created Successfully!',
+        message: 'Create Post Berhasil!',
         data: post
     }, 201);
 
@@ -41,4 +41,31 @@ export async function createPost(c: Context) {
         console.error(`Error creating post: ${e}`);
     }
 
+}
+
+export async function getPostById(c: Context) {
+    try {
+
+        const postId = parseInt(c.req.param('id'));
+
+        const post = await prisma.post.findUnique({
+            where: { id: postId },
+        });
+
+        if (!post) {
+            return c.json({
+                success: false,
+                message: 'Post Tidak Ditemukan',
+            }, 404);
+        }
+
+        return c.json({
+            success: true,
+            message: `Detail Post Berdasarkan ID: ${postId}`,
+            data: post
+        }, 200);
+
+    } catch (e: unknown) {
+        console.error(`Error finding post: ${e}`);
+    }
 }
