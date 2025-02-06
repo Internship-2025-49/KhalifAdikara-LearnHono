@@ -7,6 +7,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model auth {
+  key       String   @id
+  
+  @@map("auth")
+}
+
 model Post {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(255)
