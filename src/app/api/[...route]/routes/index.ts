@@ -1,7 +1,5 @@
 import { Hono } from 'hono'
 import { getPosts, createPost, getPostById, updatePost, deletePost } from '../../../controllers/PostControllers'
-import { basicAuth } from 'hono/basic-auth'
-import { bearerAuth } from 'hono/bearer-auth'
 import { jwt } from 'hono/jwt'
 import type { JwtVariables } from 'hono/jwt'
 import { apiKeyAuth } from '../../../middleware/Auth'
