@@ -6,7 +6,7 @@ export const getPosts = async (c: Context) => {
         const posts = await prisma.post.findMany({ orderBy: { id: 'asc' } });
 
         return c.json({
-            success: 200,
+            statusCode: 200,
             message: 'List Data Posts!',
             data: posts
         }, 200);
@@ -32,7 +32,7 @@ export async function createPost(c: Context) {
     });
 
     return c.json({
-        success: 201,
+        statusCode: 201,
         message: 'Create Post Berhasil!',
         data: post
     }, 201);
@@ -54,13 +54,13 @@ export async function getPostById(c: Context) {
 
         if (!post) {
             return c.json({
-                success: 404,
+                statusCode: 404,
                 message: 'Post Tidak Ditemukan',
             }, 404);
         }
 
         return c.json({
-            success: 200,
+            statusCode: 200,
             message: `Detail Post Berdasarkan ID: ${postId}`,
             data: post
         }, 200);
@@ -89,7 +89,7 @@ export async function updatePost(c: Context) {
         });
 
         return c.json({
-            success: 200,
+            statusCode: 200,
             message: 'Post Berhasil Diupdate!',
             data: post
         }, 200);
@@ -109,7 +109,7 @@ export async function deletePost(c: Context) {
         });
 
         return c.json({
-            success: 200,
+            statusCode: 200,
             message: 'Post Berhasil Dihapus!',
         }, 200);
 

@@ -22,7 +22,7 @@ app.get('/', async (c) => {
   if (auth) {
       return c.json(
           { 
-              success: 200, 
+              statusCode: 200, 
               message: 'Authorized',
               key: auth.key 
           }
