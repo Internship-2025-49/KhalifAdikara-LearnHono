@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
+import { cors } from 'hono/cors'
 
 import books from './routes/books'
 import authors from './routes/authors'
@@ -11,6 +12,11 @@ export const runtime = 'nodejs'
 
 const app = new Hono().basePath('/api')
 
+app.use('*', cors({
+    origin: 'http://localhost:3000',
+    allowMethods: ['GET','POST', 'PUT', 'DELETE'], 
+    allowHeaders: ["*"],
+}))
 
 app.route('/authors', authors)
 app.route('/books', books)
