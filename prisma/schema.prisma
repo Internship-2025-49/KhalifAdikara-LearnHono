@@ -13,6 +13,18 @@ model auth {
   @@map("auth")
 }
 
+model users {
+  id        Int      @id @default(autoincrement())
+  username  String   @db.VarChar(255)
+  name      String   @db.VarChar(255)
+  address   String   @db.VarChar(255)
+  phone     String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
 model Post {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(255)

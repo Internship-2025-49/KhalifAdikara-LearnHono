@@ -1,7 +1,5 @@
 import { Hono } from 'hono'
-import { getPosts, createPost, getPostById, updatePost, deletePost } from '../../../controllers/PostControllers'
-import { basicAuth } from 'hono/basic-auth'
-import { bearerAuth } from 'hono/bearer-auth'
+import { getUsers, createUser, getUserById, updateUser, deleteUser } from '../../../controllers/UserControllers'
 import { jwt } from 'hono/jwt'
 import type { JwtVariables } from 'hono/jwt'
 import { apiKeyAuth } from '../../../middleware/Auth'
@@ -35,14 +33,14 @@ app.get('/', async (c) => {
 
 app.use('*', apiKeyAuth)
 
-app.get('/data', (c) => getPosts(c))
+app.get('/data', (c) => getUsers(c))
 
-app.post('/data', (c) => createPost(c))
+app.post('/data', (c) => createUser(c))
 
-app.get('/data/:id', (c) => getPostById(c))
+app.get('/data/:id', (c) => getUserById(c))
 
-app.put('/data/:id', (c) => updatePost(c))
+app.put('/data/:id', (c) => updateUser(c))
 
-app.delete('/data/:id', (c) => deletePost(c))
+app.delete('/data/:id', (c) => deleteUser(c))
 
-export const Routes = app
+export const Users = app
