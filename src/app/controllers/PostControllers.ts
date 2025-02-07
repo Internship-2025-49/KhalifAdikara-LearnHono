@@ -19,7 +19,7 @@ export const getPosts = async (c: Context) => {
 export async function createPost(c: Context) {
     try {
 
-    const body = await c.req.parseBody();
+    const body = await c.req.json();
 
     const title   = typeof body['title'] === 'string' ? body['title'] : '';
     const content = typeof body['content'] === 'string' ? body['content'] : '';
@@ -74,7 +74,7 @@ export async function updatePost(c: Context) {
     try {
         const postId = parseInt(c.req.param('id'));
 
-        const body = await c.req.parseBody();
+        const body = await c.req.json();
 
         const title   = typeof body['title'] === 'string' ? body['title'] : '';
         const content = typeof body['content'] === 'string' ? body['content'] : '';
