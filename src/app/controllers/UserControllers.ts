@@ -6,7 +6,7 @@ export const getUsers = async (c: Context) => {
         const users = await prisma.users.findMany({ orderBy: { id: 'asc' } });
 
         return c.json({
-            success: true,
+            success: 200,
             message: 'List Data users!',
             data: users
         }, 200);
@@ -36,7 +36,7 @@ export async function createUser(c: Context) {
     });
 
     return c.json({
-        success: true,
+        success: 201,
         message: 'Create users Berhasil!',
         data: users
     }, 201);
@@ -58,13 +58,13 @@ export async function getUserById(c: Context) {
 
         if (!user) {
             return c.json({
-                success: false,
+                success: 404,
                 message: 'User Tidak Ditemukan',
             }, 404);
         }
 
         return c.json({
-            success: true,
+            success: 200,
             message: `Detail User Berdasarkan ID: ${userId}`,
             data: user
         }, 200);
@@ -97,7 +97,7 @@ export async function updateUser(c: Context) {
         });
 
         return c.json({
-            success: true,
+            success: 200,
             message: 'Post Berhasil Diupdate!',
             data: user
         }, 200);
@@ -117,7 +117,7 @@ export async function deleteUser(c: Context) {
         });
 
         return c.json({
-            success: true,
+            success: 200,
             message: 'User Berhasil Dihapus!',
         }, 200);
 
