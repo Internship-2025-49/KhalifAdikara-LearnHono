@@ -5,11 +5,7 @@ export const getUsers = async (c: Context) => {
     try {
         const users = await prisma.users.findMany({ orderBy: { id: 'asc' } });
 
-        return c.json({
-            statusCode: 200,
-            message: 'List Data users!',
-            data: users
-        }, 200);
+        return c.json(users);
 
     } catch (e: unknown) {
         console.error(`Error getting users: ${e}`);
