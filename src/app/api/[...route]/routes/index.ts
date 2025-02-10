@@ -11,7 +11,7 @@ const app = new Hono<{ Variables: Variables }>()
 
 app.use('/*',jwt(
     {
-      secret: 'rahasia',
+      secret: 'a96206a191559dec12923aff2fc8bab9881929a1dfd33a3ce2647eb1ab4dbe23',
     }
   )
 )
