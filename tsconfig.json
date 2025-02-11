@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "JestApp/sum.js", "JestApp/user.test.js"  ],
   "exclude": [
     "node_modules"
   ]
