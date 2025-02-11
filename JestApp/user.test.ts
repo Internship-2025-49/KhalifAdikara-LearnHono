@@ -34,7 +34,11 @@ describe('UserController test', () => {
             username: 'user test',
             name: 'nama user test',
             address: 'alamat test',
+<<<<<<< HEAD
             phone: '0000000000',
+=======
+            phone: '080808080808',
+>>>>>>> 30934500f336b814d4a00744f2f6f33b4f05e9a8
         };
 
         prisma.users.create = jest.fn().mockResolvedValue(newUser);
