@@ -31,11 +31,7 @@ export async function createUser(c: Context) {
         }
     });
 
-    return c.json({
-        statusCode: 201,
-        message: 'Create users Berhasil!',
-        data: users
-    }, 201);
+    return c.json(users);
 
     } catch (e: unknown) {
         console.error(`Error creating post: ${e}`);
@@ -59,11 +55,7 @@ export async function getUserById(c: Context) {
             }, 404);
         }
 
-        return c.json({
-            statusCode: 200,
-            message: `Detail User Berdasarkan ID: ${userId}`,
-            data: user
-        }, 200);
+        return c.json(user);
 
     } catch (e: unknown) {
         console.error(`Error finding post: ${e}`);
@@ -92,11 +84,7 @@ export async function updateUser(c: Context) {
             },
         });
 
-        return c.json({
-            statusCode: 200,
-            message: 'Post Berhasil Diupdate!',
-            data: user
-        }, 200);
+        return c.json(user);
 
     } catch (e: unknown) {
         console.error(`Error updating post: ${e}`);
